@@ -1,15 +1,17 @@
 import entity.ChuyenBay;
 import entity.PhiCong;
 import entity.TiepVien;
+import entity.NhanVien;
 import service.ChuyenBayManager;
 import service.PhiCongManager;
 import service.TiepVienManager;
-import Swing.DangKi;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 import java.io.*;
+import Swing.DangKi;
+
 
 
 public class Main {
@@ -19,7 +21,6 @@ public class Main {
         PhiCongManager qlyPhiCong = new PhiCongManager();
         Scanner sc = new Scanner(System.in);
         login();
-        //adminlogin();
 
 
         DangKi dangKi = new DangKi();
@@ -66,36 +67,24 @@ public class Main {
 
 
 
+
     public static void showMenu(){
         int choice;
         do{
             System.out.println("\nADMIN SYSTEM");
             System.out.println("\n=== Menu chính ===");
             System.out.println("1. Quản lý chuyến bay");
-            System.out.println("2. Quản lý nhân sự");
+            System.out.println("2. Quản lý phi công");
+            System.out.println("3. Quản lý tiếp viên");
             System.out.println("0. Thoát");
             System.out.print("Nhập lựa chọn của bạn: ");
             choice = sc.nextInt();
             sc.nextLine();
+
             switch (choice){
                 case 1 -> quanlychuyenbay();
-                case 2 -> {
-                    int choice2;
-                    do{
-                        System.out.println("\n=== Menu quản lý nhân sự ===");
-                        System.out.println("1. Quản lý Phi Công");
-                        System.out.println("2. Quản lý Tiếp Viên");
-                        System.out.println("0. Quay lại Menu chính");
-                        choice2 = sc.nextInt();
-                        sc.nextLine();
-                        switch (choice2){
-                            case 1 -> quanlyphicong();
-                            case 2 -> quanLytiepvien();
-                        }
-                    }while(choice2 != 0);
-
-                }
-
+                case 2 -> quanlyphicong();
+                case 3 -> quanLytiepvien();
                 case 0 -> System.out.println("Thoát chương trình");
                 default -> System.out.println("Không hợp lệ");
             }
@@ -119,26 +108,11 @@ public class Main {
             sc.nextLine();
 
             switch (choice){
-                case 1 -> {
-                    cb.addChuyenBay();
-                    break;
-                }
-                case 2 -> {
-                    cb.editChuyenBay();
-                    break;
-                }
-                case 3 -> {
-                    cb.removeChuyenBay();
-                    break;
-                }
-                case 4 -> {
-                    cb.printChuyenBay();
-                    break;
-                }
-                case 5 -> {
-                    cb.locChuyenBayTheoDiemDen();
-                    break;
-                }
+                case 1 -> cb.addChuyenBay();
+                case 2 -> cb.editChuyenBay();
+                case 3 -> cb.removeChuyenBay();
+                case 4 -> cb.hienThi();
+                case 5 -> cb.locChuyenBayTheoTieuChi();
                 case 0 -> System.out.println("Thoát chương trình");
                 default -> System.out.println("Không hợp lệ");
 
@@ -159,43 +133,16 @@ public class Main {
             System.out.println("3. Xóa phi công");
             System.out.println("4. Hiển thị danh sách phi công");
             System.out.println("5. Lọc phi công");
-            System.out.println("0. Về menu chính");
             choice = sc.nextInt();
             sc.nextLine();
             switch (choice){
-                case 1 -> {
-                    pc.addPhiCong();
-                    break;
-                }
-                case 2 -> {
-                    pc.editPhiCong();
-                    break;
-                }
-                case 3 -> {
-                    pc.removePhiCong();
-                    break;
-                }
-                case 4 -> {
-                    int choice2;
-                    do{
-                        System.out.println("\n=== Danh sách phi công ===");
-                        System.out.println("1. Hiển thị danh sách");
-                        System.out.println("2. Sắp xếp");
-                        System.out.println("0. Về Menu chính");
-                        choice2 = sc.nextInt();
-                        switch (choice2){
-                            case 1 -> pc.hienThi();
-                            case 2 -> pc.sortPhiCong();
-
-                        }
-                    }while(choice2 != 0);
-                    break;
-                }
-
+                case 1 -> pc.addPhiCong();
+                case 2 -> pc.editPhiCong();
+                case 3 -> pc.removePhiCong();
+                case 4 -> pc.hienThi();
             }
         }while(choice != 0);
     }
-
 
     public static void quanLytiepvien(){
         TiepVienManager tv = new TiepVienManager();
@@ -207,39 +154,20 @@ public class Main {
             System.out.println("2. Sửa tiếp viên");
             System.out.println("3. Xóa tiếp viên");
             System.out.println("4. Hiển thị danh sách tiếp viên");
-            System.out.println("0. Về menu chính");
+            System.out.println("5. Lọc tiếp viên");
             choice = sc.nextInt();
             sc.nextLine();
             switch (choice){
-                case 1 -> {
-                    tv.addTiepVien();
-                    break;
-                }
-                case 2 -> {
-                    tv.editTiepVien();
-                    break;
-                }
-                case 3 -> {
-                    tv.removeTiepVien();
-                    break;
-                }
-                case 4 -> {
-                    int choice2;
-                    do{
-                        System.out.println("\n=== Danh sách tiếp viên ===");
-                        System.out.println("1. Hiển thị danh sách");
-                        System.out.println("2. Sắp xếp");
-                        System.out.println("0. Về Menu chính");
-                        choice2 = sc.nextInt();
-                        switch (choice2){
-                            case 1 -> tv.hienThi();
-                            case 2 -> tv.sortTiepVien();
-
-                        }
-                    }while(choice2 != 0);
-                    break;
-                }
+                case 1 -> tv.addTiepVien();
+                case 2 -> tv.editTiepVien();
+                case 3 -> tv.removeTiepVien();
+                case 4 -> tv.hienThi();
             }
         }while(choice !=0);
     }
+
+
+
+
 }
+
