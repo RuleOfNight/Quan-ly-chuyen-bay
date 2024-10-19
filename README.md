@@ -17,7 +17,8 @@ Chương trình gồm những tính năng cơ bản để quản lý chuyến ba
 Phiên bản này chưa cập nhật tính năng dành cho tài khoản khách, tài khoản admin có thẻ tìm thấy ở hàm **login()**
 Vui lòng bỏ thêm tiền để có full source về nộp bài tập lớn 🐧 hoặc tự đem về phát triển thêm 
 <img src="db.png" alt="database">
-    <button id="ok" style="    #ok{
+<div>
+<button id="ok" style="    #ok{
         padding: 10px;
         width: 150px;
         font-weight: bold;
@@ -32,3 +33,4 @@ Vui lòng bỏ thêm tiền để có full source về nộp bài tập lớn �
         background-color: brown;
         color:gold;
     }">Ok</button>
+    </div>
